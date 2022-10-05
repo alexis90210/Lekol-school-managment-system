@@ -42,8 +42,8 @@ const macOS = {
 }
 
 module.exports = {
-  productName: 'cykla',
-  appId: 'net.cykla.app',
+  productName: 'Lekol',
+  appId: 'net.lekol.app',
   artifactName: 'setup-${version}.${ext}',
   directories: {
     output: 'build'

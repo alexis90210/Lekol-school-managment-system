@@ -1,5 +1,5 @@
 {
-  "name": "cykla",
+  "name": "lekol",
   "version": "1.0.1",
   "description": "Systeme de gestion scolaire multi-fonctionnel",
   "main": "./dist/main/index.js",

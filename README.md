@@ -1,4 +1,4 @@
-# cykla
+# lekol
 
 > Systeme de gestion scolaire multi-fonctionnel
 
