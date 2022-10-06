@@ -1393,6 +1393,26 @@ class Model {
 
     return exec;
   }
+
+  async createDemoAgent() {
+    let exec;
+    let sql ="INSERT INTO `agent`( `NomAgent`, `PrenomAgent`, `LoginAgent`, `PasswordAgent`, `CodeAgent`) VALUES ('Compte demo' , 'Test' , 'test' ,'1234','DEMOCODE' )";
+    await this.knex.raw(sql).then((res) => {
+      exec = res;
+    });
+
+    return exec;
+  }
+
+  async createEcole(data) {
+    let exec;
+    let sql ="INSERT INTO `etablissement`(`NomEtab`, `CodeEtab`) VALUES ('" + data.Nom + "' , '" + data.Code + "')"
+    await this.knex.raw(sql).then((res) => {
+      exec = res;
+    });
+
+    return exec;
+  }
 }
 
 //  ===========================================================

@@ -2,7 +2,7 @@ const ICONS_DIR = 'build/icons/'
 
 const windowsOS = {
   win: {
-    icon: ICONS_DIR + 'win-icon.ico',
+    icon: ICONS_DIR + 'icon.png',
     publisherName: 'michal',
     target: 'nsis'
   },
@@ -14,7 +14,7 @@ const windowsOS = {
 
 const linuxOS = {
   linux: {
-    icon: ICONS_DIR,
+    icon: ICONS_DIR + 'icon.png',
     target: 'deb'
   }
 }
@@ -22,7 +22,7 @@ const linuxOS = {
 const macOS = {
   mac: {
     target: 'dmg',
-    icon: ICONS_DIR + 'con.icns'
+    icon: ICONS_DIR + 'icon.png'
   },
   dmg: {
     contents: [
@@ -43,8 +43,8 @@ const macOS = {
 
 module.exports = {
   productName: 'Lekol',
-  appId: 'net.lekol.app',
-  artifactName: 'setup-${version}.${ext}',
+  appId: 'com.lekol.app',
+  artifactName: 'Lekol-system-${version}.${ext}',
   directories: {
     output: 'build'
   },

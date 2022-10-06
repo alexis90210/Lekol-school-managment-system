@@ -6,7 +6,7 @@
         <p class="text-white px pb-5">CONFIGURATION DES CYCLES</p>
 
         <div class="topleft align-row">
-          <div class="topbar-title-item">
+          <div class="topbar-title-item box  m-1 has-background-success-dark has-text-light">
             <abbr title="Cycle Maternel" class="abbr-o">
               <span class="align-row">
                 <b-switch
@@ -21,7 +21,7 @@
             </abbr>
           </div>
 
-          <div class="topbar-title-item">
+          <div class="topbar-title-item box  m-1 has-background-danger-dark has-text-light">
             <abbr title="Cycle prescolaire" class="abbr-o">
               <span class="align-row align-center">
                 <b-switch
@@ -36,7 +36,7 @@
             </abbr>
           </div>
 
-          <div class="topbar-title-item">
+          <div class="topbar-title-item box  m-1 has-background-info-dark has-text-light">
             <abbr title="Cycle primaire" class="abbr-o">
               <span class="align-row">
                 <b-switch
@@ -51,7 +51,7 @@
             </abbr>
           </div>
 
-          <div class="topbar-title-item">
+          <div class="topbar-title-item box m-1 has-background-link-dark has-text-light">
             <abbr title="Cycle College" class="abbr-o">
               <span class="align-row">
                 <b-switch
@@ -70,8 +70,9 @@
         <div class="mt-6 pl-4">
           <b-button type="is-info" 
           native-type="submit"
+          rounded
           icon-left="content-save-cog"
-            >Valider</b-button
+            >Valider les actions</b-button
           >
         </div>
       </div>

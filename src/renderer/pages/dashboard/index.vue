@@ -141,7 +141,7 @@
           <div class="align-column gap-3">
             <div class="align-row flex-between t-small">
               <p class="m-0 text-white">Cycle (s)</p>
-              <p class="m-0 text-white">4</p>
+              <p class="m-0 text-white">{{autre.cycle}}</p>
             </div>
 
             <div class="align-row flex-between t-small">
@@ -214,6 +214,8 @@ export default {
 
     let etab =  await db.getEtabInfo()
 
+    console.log(etab);
+
     if(etab.bPreScolaire == 1) {
       this.autre.cycle  +=1
     }
@@ -230,29 +232,28 @@ export default {
       this.autre.cycle  +=1
     }
 
-
-    this.autre.classe = await db.getClasseIntermediaire({
+    this.autre.classe = (await db.getClasseIntermediaire({
       Annee:await this.$localForage.getItem("annee"),
       cycle:0,
       IDCLASSE:0,
       IDCLASSE_GEN:0
-    })
+    }))[0]
     this.autre.classe  = this.autre.classe.length
 
-    this.autre.matiere = await db.getMatiereClasse(await this.$localForage.getItem("annee") , 0)
+    this.autre.matiere = (await db.getMatiereClasse(await this.$localForage.getItem("annee") , 0))[0]
     this.autre.matiere  = this.autre.matiere.length
 
-    this.eleveInscris = (await db.eleveInscris( await this.$localForage.getItem("annee")))[0]
+    this.eleveInscris = (await db.eleveInscris( await this.$localForage.getItem("annee")))[0] ?? {Total:0, Homme:0, Femme:0}
 
-    this.eleveReInscris =  (await db.eleveReInscris( await this.$localForage.getItem("annee")))[0]
+    this.eleveReInscris =  (await db.eleveReInscris( await this.$localForage.getItem("annee")))[0] ?? {Total:0, Homme:0, Femme:0}
 
-    this.eleveExamens = (await db.eleveExamens( await this.$localForage.getItem("annee")))[0]
+    this.eleveExamens = (await db.eleveExamens( await this.$localForage.getItem("annee")))[0] ?? {Total:0, Homme:0, Femme:0}
 
-    this.agent = (await db.agentStat(await this.$localForage.getItem("annee")))[0]
+    this.agent = (await db.agentStat(await this.$localForage.getItem("annee")))[0] ?? {Total:0, Homme:0, Femme:0}
 
-    this.enseignant =( await db.enseignantStat( await this.$localForage.getItem("annee")))[0]
+    this.enseignant = ( await db.enseignantStat( await this.$localForage.getItem("annee")))[0] ?? {Total:0, Homme:0, Femme:0}
 
-    console.log( this.eleveInscris );
+    
 
     this.canLoad = true
   },

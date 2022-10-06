@@ -381,7 +381,7 @@
             </abbr>
           </div>
 
-          <div class="topbar-title-item" v-if="cycle.college == 1">
+          <div class="topbar-title-item">
             <abbr title="Cycle primaire" class="abbr-o">
               <span class="align-row">
                 <b-switch
@@ -442,8 +442,11 @@
           <div class="topbar-title-item status">
             <p class="status-role">
               <i class="mdi mdi-earth green active-item-size"></i>
-              <span id="ville-ecole"
+              <span id="ville-ecole" v-if="etablissement.Ville"
                 >{{ etablissement.Ville }},{{ etablissement.Pays }}</span
+              >
+              <span id="ville-ecole" v-else
+                >Info manquant</span
               >
             </p>
             <p class="status-name" id="tab-etab" @click="$router.push('/dashboard/etablissement')">

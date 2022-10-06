@@ -28,12 +28,15 @@
         </template>
         <div class="card-content">
           <div class="content has-text-light pt-6">
+            <form @submit.prevent="create_ecole">
             <div style="width: 500px">
+              
                 <div class="mt m-3">
               <p class="text-white mt">Nom de l'ecole</p>
               <input
               v-model="Nom"
                 class="input-text"
+                @input="Nom = Nom.toUpperCase()"
                 required
                 style="width: 400px"
               />
@@ -42,19 +45,21 @@
             <div class="mt m-3">
               <p class="text-white mt">Code de l'ecole</p>
               <input
-              v-model="Code"
+                v-model="Code"
+                @input="Code = Code.toUpperCase()"
                 class="input-text"
                 required
                 style="width: 400px"
               />
             </div>
-
+         
             </div>
+          
             <div class="mt-6" style="padding-top: 100px">
               <b-button
                 type="is-link"
                 expanded
-                @click="create_ecole"
+                native-type="submit"
                 icon-right="arrow-right"
                 rounded
                 >Suivant</b-button
@@ -76,6 +81,9 @@
                 congolais
               </p>
             </div>
+
+          </form>
+            
           </div>
         </div>
       </b-collapse>
@@ -146,16 +154,31 @@ import db from '../../plugins/model'
         window.location.reload();
       },
       async create_ecole() {
-        let exec = await db.createEcole({
+
+
+        let exec1 = await db.createEcole({
           Nom:this.Nom,
           Code:this.Code
         })
 
-        if(exec) {
+        let exec2  = false
+
+        if ( exec1 ) {
+          exec2 = await db.createDemoAgent()
+        } else {
+          this.$buefy.notification.open({
+            message:'Creation de votre ecole a echoue veuillez contacter le developpeur',
+            type:'is-danger',
+            hasIcon:true,
+            duration:10000
+          })
+        }
+
+        if(exec2) {
           this.$router.push('/installation/ouverture-annee')
         } else {
           this.$buefy.notification.open({
-            message:'Creatiion de votre ecole a echoue veuillez contacter le developpeur',
+            message:'Creation du compte demo a echoue veuillez contacter le developpeur',
             type:'is-danger',
             hasIcon:true,
             duration:10000

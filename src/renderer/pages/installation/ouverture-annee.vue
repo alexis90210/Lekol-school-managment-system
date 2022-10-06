@@ -27,40 +27,27 @@
           </div>
       </template>
       <div class="card-content">
-          <div class="content has-text-light is-size-6">
-              {{ parseInt(annee.bCloture) == 1 ? "Annee scolaire cloturee" : "Annee scolaire non cloturee"  }}
-              <div class="mt-6" v-if="parseInt(annee.bCloture) == 0" style="zoom:90%">
-                  <b-button
-                    type="is-danger"
-                    @click="clotureAnnee(true ,  annee.debut)"
-                    icon-left="content-save-cog"
-                    >Je cloture</b-button
-                  >
-                </div>
-  
-                <div class="mt-6" v-if="parseInt(annee.bCloture) == 1" style="zoom:90%">
-                  <b-button
-                    type="is-info"
-                    @click="clotureAnnee(false ,  annee.debut)"
-                    icon-left="content-save-cog"
-                    >Je de-cloture</b-button
-                  >
-                </div>
-  
-                <div class="mt-4" style="zoom:90%">
-                  <b-button
-                    type="is-warning"
-                    icon-left="content-save-cog"
-                    @click="adminAnnee( annee.debut)"
-                    >Administrer cette annee</b-button
-                  >
-                </div>
+          <div class="content has-text-light is-size-6 has-text-success">
+            Ouverure de l'annee  {{ annee.debut }} -  {{ annee.fin }} <br> effectuee avec success
+              
           </div>
+
+          <div class="mt-6" >
+                  <b-button
+                    type="is-link"
+                    expanded
+                    rounded
+                    @click="$router.push('/')"
+                    icon-left="content-save-cog"
+                    >Se connecter</b-button
+                  >
+                </div>
       </div>
       </b-collapse>
   
       <b-collapse
       class="card card2"
+      v-if="anneeScolaire.length == 0"
       :open="true"
       :aria-id="'contentIdForA11y5-'">
       <template #trigger="props">
@@ -110,14 +97,7 @@
                   >
                 </div>
   
-                <div class="mt-6" >
-                  <b-button
-                    type="is-success"
-                    @click="$router.push('/')"
-                    icon-left="content-save-cog"
-                    >Se connecter</b-button
-                  >
-                </div>
+               
           </div>
       </div>
       </b-collapse>

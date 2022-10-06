@@ -49,10 +49,18 @@
             <span class="has-text-danger" v-else-if="error.code == 'ETIMEDOUT'">
               Temps de connexion au serveur distant trop long
               <br />
-              CODE : ({{ error.code }})</span
+              CODE : {{ error.code }} </span
+            >
+
+            <span class="has-text-danger" v-else-if="error.code == 'ENETUNREACH'">
+              Veuillez verifier votre connexion reseau
+              <br />
+              CODE : {{ error.address }}</span
             >
 
             <span class="has-text-danger" v-else>{{ error.message }}</span>
+
+            
 
             <!-- {{ error }} -->
           </div>
